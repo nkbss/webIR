@@ -1,4 +1,5 @@
 import Document, { Head, Main, NextScript } from 'next/document'
+import { HeaderLayout } from '../components/Header'
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -24,11 +25,12 @@ export default class MyDocument extends Document {
           <style>
             {`
               html { overflow: auto }
-              body { padding-top: 100px }
+              body { padding-top: 50px }
             `}
           </style>
         </Head>
         <body>
+          <HeaderLayout />
           <Main />
           <NextScript />
         </body>
