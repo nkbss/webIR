@@ -3,7 +3,11 @@ import { SearchCard } from '../cards'
 
 class SearchLayout extends Component {
   render() {
-    return <SearchCard />
+    return (
+      <div className="Section-Search">
+        <SearchCard />
+      </div>
+    )
   }
 }
 

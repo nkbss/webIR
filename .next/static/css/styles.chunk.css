@@ -1,9 +1,25 @@
+.Section-Search {
+  padding-top: 50px;
+}
+
 .search {
-  width: 250px;
+  width: 400px;
 }
 
 .searchType {
-  width: 200px;
+  width: 100px;
+}
+
+.Section-News {
+  padding-top: 50px;
+}
+
+.NewsCard {
+  width: 500px;
+}
+
+.Section-NewsCard {
+  padding-top: 10px;
 }
 
 
