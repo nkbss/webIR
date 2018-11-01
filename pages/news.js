@@ -1,18 +1,16 @@
 import React, { Component } from 'react'
 import { SearchLayout } from '../components/Search/layout'
-import { HeaderLayout } from '../components/Header'
+import { NewsLayout } from '../components/News/Layout'
 import '../style.css'
-
-class index extends Component {
+class news extends Component {
   render() {
     return (
-      <div className="index">
-        <HeaderLayout />
+      <div>
         <SearchLayout />
-        {/* <NewsLayout /> */}
+        <NewsLayout />
       </div>
     )
   }
 }
 
-export default index
+export default news

@@ -4,7 +4,8 @@ import {
   Input,
   Dropdown,
   GridColumn,
-  Button
+  Button,
+  Icon
 } from '../../../node_modules/semantic-ui-react'
 
 const type = [
@@ -18,22 +19,20 @@ const SearchCard = () => {
   return (
     <div>
       <Grid>
-        <Grid.Row columns="3">
-          <Grid.Column textAlign="right" width="8">
-            <Input className="search" icon="search" placeholder="Search" />
-          </Grid.Column>
-          <Grid.Column textAlign="left" width="3">
-            <Dropdown
-              className="searchType"
-              placeholder="Search By"
-              search
-              selection
-              options={type}
+        <Grid.Row textAlign="center">
+          <Grid.Column>
+            <Input
+              className="search"
+              type="text"
+              size="huge"
+              icon={<Icon name="futbol" size="large" />}
             />
           </Grid.Column>
-          <Grid.Column width="2">
-            <Button basic color="black">
-              Search
+        </Grid.Row>
+        <Grid.Row textAlign="center">
+          <Grid.Column>
+            <Button basic color="black" size="big">
+              Goal!
             </Button>
           </Grid.Column>
         </Grid.Row>

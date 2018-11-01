@@ -93,121 +93,96 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
-/***/ "./components/News/Cards/NewsCard.js":
-/*!*******************************************!*\
-  !*** ./components/News/Cards/NewsCard.js ***!
-  \*******************************************/
-/*! exports provided: NewsCard */
+/***/ "./components/Header/HeaderCard.js":
+/*!*****************************************!*\
+  !*** ./components/Header/HeaderCard.js ***!
+  \*****************************************/
+/*! exports provided: HeaderCard */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewsCard", function() { return NewsCard; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HeaderCard", function() { return HeaderCard; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/semantic-ui-react */ "./node_modules/semantic-ui-react/dist/es/index.js");
-var _jsxFileName = "/Users/kanoktat/Documents/webir/project/components/News/Cards/NewsCard.js";
+/* harmony import */ var _node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/semantic-ui-react */ "./node_modules/semantic-ui-react/dist/es/index.js");
+var _jsxFileName = "/Users/kanoktat/Documents/webir/project/components/Header/HeaderCard.js";
 
 
+var image = '../../static/images/football.png';
 
-var NewsCard = function NewsCard() {
+var HeaderCard = function HeaderCard() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "Section-NewsCard",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 6
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
-    textAlign: "center",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 7
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Row, {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 8
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column, {
-    width: "10",
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 9
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Card"], {
-    raised: true,
-    fluid: true,
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Row, {
+    columns: "2",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 10
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Card"].Content, {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column, {
+    width: "7",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 11
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Image"], {
+    size: "tiny",
+    src: image,
+    floated: "right",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 12
     },
     __self: this
-  }, "MLS: NYC and Portland through"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Card"].Meta, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 13
-    },
-    __self: this
-  }, "Football 01/11/18 8:19am"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Card"].Description, {
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column, {
+    textAlign: "left",
+    verticalAlign: "middle",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 14
     },
     __self: this
-  }, "New York City FC qualified for the quarter-finals of the MLS Cup play-offs on Wednesday with a 3-1 victory over Philadelphia Union.")))))));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "headText",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15
+    },
+    __self: this
+  }, "Football Update")))));
 };
 
 
 
 /***/ }),
 
-/***/ "./components/News/Cards/index.js":
-/*!****************************************!*\
-  !*** ./components/News/Cards/index.js ***!
-  \****************************************/
-/*! exports provided: NewsCard */
+/***/ "./components/Header/HeaderLayout.js":
+/*!*******************************************!*\
+  !*** ./components/Header/HeaderLayout.js ***!
+  \*******************************************/
+/*! exports provided: HeaderLayout */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _NewsCard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NewsCard */ "./components/News/Cards/NewsCard.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "NewsCard", function() { return _NewsCard__WEBPACK_IMPORTED_MODULE_0__["NewsCard"]; });
-
-
-
-/***/ }),
-
-/***/ "./components/News/Layout/NewsLayout.js":
-/*!**********************************************!*\
-  !*** ./components/News/Layout/NewsLayout.js ***!
-  \**********************************************/
-/*! exports provided: NewsLayout */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewsLayout", function() { return NewsLayout; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HeaderLayout", function() { return HeaderLayout; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Cards__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Cards */ "./components/News/Cards/index.js");
-/* harmony import */ var _node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/semantic-ui-react */ "./node_modules/semantic-ui-react/dist/es/index.js");
-var _jsxFileName = "/Users/kanoktat/Documents/webir/project/components/News/Layout/NewsLayout.js";
+/* harmony import */ var _HeaderCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./HeaderCard */ "./components/Header/HeaderCard.js");
+var _jsxFileName = "/Users/kanoktat/Documents/webir/project/components/Header/HeaderLayout.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -230,68 +205,58 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
-var NewsLayout =
+var HeaderLayout =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(NewsLayout, _Component);
+  _inherits(HeaderLayout, _Component);
 
-  function NewsLayout() {
-    _classCallCheck(this, NewsLayout);
+  function HeaderLayout() {
+    _classCallCheck(this, HeaderLayout);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(NewsLayout).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(HeaderLayout).apply(this, arguments));
   }
 
-  _createClass(NewsLayout, [{
+  _createClass(HeaderLayout, [{
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "Section-News",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 7
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_HeaderCard__WEBPACK_IMPORTED_MODULE_1__["HeaderCard"], {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 8
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cards__WEBPACK_IMPORTED_MODULE_1__["NewsCard"], {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 9
-        },
-        __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cards__WEBPACK_IMPORTED_MODULE_1__["NewsCard"], {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 10
-        },
-        __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cards__WEBPACK_IMPORTED_MODULE_1__["NewsCard"], {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 11
         },
         __self: this
       }));
     }
   }]);
 
-  return NewsLayout;
+  return HeaderLayout;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
 
 /***/ }),
 
-/***/ "./components/News/Layout/index.js":
-/*!*****************************************!*\
-  !*** ./components/News/Layout/index.js ***!
-  \*****************************************/
-/*! exports provided: NewsLayout */
+/***/ "./components/Header/index.js":
+/*!************************************!*\
+  !*** ./components/Header/index.js ***!
+  \************************************/
+/*! exports provided: HeaderCard, HeaderLayout */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _NewsLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NewsLayout */ "./components/News/Layout/NewsLayout.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "NewsLayout", function() { return _NewsLayout__WEBPACK_IMPORTED_MODULE_0__["NewsLayout"]; });
+/* harmony import */ var _HeaderCard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./HeaderCard */ "./components/Header/HeaderCard.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HeaderCard", function() { return _HeaderCard__WEBPACK_IMPORTED_MODULE_0__["HeaderCard"]; });
+
+/* harmony import */ var _HeaderLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./HeaderLayout */ "./components/Header/HeaderLayout.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HeaderLayout", function() { return _HeaderLayout__WEBPACK_IMPORTED_MODULE_1__["HeaderLayout"]; });
+
 
 
 
@@ -335,74 +300,69 @@ var SearchCard = function SearchCard() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19
+      lineNumber: 20
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Row, {
-    columns: "3",
-    __source: {
-      fileName: _jsxFileName,
       lineNumber: 21
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column, {
-    textAlign: "right",
-    width: "8",
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Row, {
+    textAlign: "center",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 22
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Input"], {
-    className: "search",
-    icon: "search",
-    placeholder: "Search",
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column, {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 23
     },
     __self: this
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column, {
-    textAlign: "left",
-    width: "3",
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Input"], {
+    className: "search",
+    type: "text",
+    size: "huge",
+    icon: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Icon"], {
+      name: "futbol",
+      size: "large",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 28
+      },
+      __self: this
+    }),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25
+      lineNumber: 24
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Dropdown"], {
-    className: "searchType",
-    placeholder: "Search By",
-    search: true,
-    selection: true,
-    options: type,
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Row, {
+    textAlign: "center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26
+      lineNumber: 32
     },
     __self: this
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column, {
-    width: "2",
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 33
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Button"], {
     basic: true,
     color: "black",
+    size: "big",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 34
     },
     __self: this
-  }, "Search")))));
+  }, "Goal!")))));
 };
 
 
@@ -26890,7 +26850,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Search_layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Search/layout */ "./components/Search/layout/index.js");
-/* harmony import */ var _components_News_Layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/News/Layout */ "./components/News/Layout/index.js");
+/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Header */ "./components/Header/index.js");
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../style.css */ "./style.css");
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_3__);
 var _jsxFileName = "/Users/kanoktat/Documents/webir/project/pages/index.js";
@@ -26933,21 +26893,22 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 8
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Search_layout__WEBPACK_IMPORTED_MODULE_1__["SearchLayout"], {
+        className: "index",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 9
         },
         __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_News_Layout__WEBPACK_IMPORTED_MODULE_2__["NewsLayout"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_2__["HeaderLayout"], {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 10
+        },
+        __self: this
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Search_layout__WEBPACK_IMPORTED_MODULE_1__["SearchLayout"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 11
         },
         __self: this
       }));

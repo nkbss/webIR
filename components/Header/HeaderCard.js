@@ -8,11 +8,11 @@ const HeaderCard = () => {
     <div>
       <Grid>
         <Grid.Row columns="2">
-          <Grid.Column width="6">
+          <Grid.Column width="7">
             <Image size="tiny" src={image} floated="right" />
           </Grid.Column>
           <Grid.Column textAlign="left" verticalAlign="middle">
-            <h1>Football News Search Engine</h1>
+            <div className="headText">Football Update</div>
           </Grid.Column>
         </Grid.Row>
       </Grid>

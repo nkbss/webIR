@@ -3,7 +3,8 @@
 }
 
 .search {
-  width: 400px;
+  width: 600px;
+  height: 50px;
 }
 
 .searchType {
@@ -20,6 +21,15 @@
 
 .Section-NewsCard {
   padding-top: 10px;
+}
+
+.index {
+  padding-top: 100px;
+}
+
+.headText {
+  font-size: 40px;
+  font-weight: bold;
 }
 
 

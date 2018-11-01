@@ -21,6 +21,12 @@ export default class MyDocument extends Document {
             integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
             crossorigin="anonymous"
           />
+          <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+            integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
+            crossorigin="anonymous"
+          />
 
           <style>
             {`
@@ -30,7 +36,6 @@ export default class MyDocument extends Document {
           </style>
         </Head>
         <body>
-          <HeaderLayout />
           <Main />
           <NextScript />
         </body>
