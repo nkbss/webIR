@@ -29,13 +29,13 @@ const SearchCard = () => {
             />
           </Grid.Column>
         </Grid.Row>
-        <Grid.Row textAlign="center">
+        {/* <Grid.Row textAlign="center">
           <Grid.Column>
             <Button basic color="black" size="big">
               Goal!
             </Button>
           </Grid.Column>
-        </Grid.Row>
+        </Grid.Row> */}
       </Grid>
     </div>
   )

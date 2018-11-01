@@ -1,13 +1,15 @@
 {
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
+    "express": "^4.16.4",
     "next": "^7.0.2",
+    "next-routes": "^1.4.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "semantic-ui-react": "^0.83.0"

@@ -15,12 +15,7 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css"
           />
-          <link
-            rel="stylesheet"
-            href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-            integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-            crossorigin="anonymous"
-          />
+
           <link
             rel="stylesheet"
             href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
@@ -31,7 +26,7 @@ export default class MyDocument extends Document {
           <style>
             {`
               html { overflow: auto }
-              body { padding-top: 50px }
+              body { padding-top: 80px }
             `}
           </style>
         </Head>
