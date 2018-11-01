@@ -32,5 +32,13 @@
   font-weight: bold;
 }
 
+.searchHeader {
+  width: 400px;
+}
+
+.topHeader {
+  padding-bottom: 70px;
+}
+
 
 /*# sourceMappingURL=styles.chunk.css.map*/

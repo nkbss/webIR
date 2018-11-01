@@ -1,3 +1,3 @@
 const routes = (module.exports = require('next-routes')())
 
-routes.add('/').add('news')
+routes.add('index').add('news')

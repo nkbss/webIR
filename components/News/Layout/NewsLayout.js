@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { NewsCard } from '../Cards'
-import { Grid } from '../../../node_modules/semantic-ui-react'
 
 class NewsLayout extends Component {
   render() {
