@@ -7,7 +7,7 @@ const NewsCard = () => {
       <Grid textAlign="center">
         <Grid.Row>
           <Grid.Column width="10">
-            <Card raised fluid href="/">
+            <Card raised fluid href="news">
               <Card.Content>
                 <Card.Header>MLS: NYC and Portland through</Card.Header>
                 <Card.Meta>Football 01/11/18 8:19am</Card.Meta>
