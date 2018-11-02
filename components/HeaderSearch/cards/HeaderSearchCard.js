@@ -8,12 +8,12 @@ import {
 
 const image = '../../../static/images/football.png'
 
-const HeaderSearchCard = () => {
+const HeaderSearchCard = props => {
   return (
     <div>
       <Menu fixed="top" borderless pointing>
         <Menu.Item>
-          <Image src={image} size="tiny" href="/" />
+          <Image src={image} size="tiny" href="/" onClick={props.removeType} />
         </Menu.Item>
         <Menu.Item>
           <label
@@ -23,7 +23,7 @@ const HeaderSearchCard = () => {
               paddingBottom: '15px'
             }}
           >
-            News
+            {props.type}
           </label>
         </Menu.Item>
         <Menu.Item className="searchHeader">

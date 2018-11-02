@@ -279,18 +279,14 @@ __webpack_require__.r(__webpack_exports__);
 
 var type = [{
   key: '1',
-  value: 'Football Club',
-  text: 'Football Club'
+  value: 'Clubs',
+  text: 'Clubs'
 }, {
   key: '2',
-  value: 'Team',
-  text: 'Team'
+  value: 'Players',
+  text: 'Players'
 }, {
   key: '3',
-  value: 'Player',
-  text: 'Player'
-}, {
-  key: '4',
   value: 'News',
   text: 'News'
 }];
@@ -303,10 +299,10 @@ var SearchCard = function SearchCard(props) {
       fontSize: '18px'
     },
     placeholder: "Search By",
-    clearable: true,
     options: type,
     selection: true,
-    size: "large"
+    size: "large",
+    onChange: props.handleSearchBy
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Row, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Input"], {
     className: "search",
     type: "text",
@@ -315,7 +311,9 @@ var SearchCard = function SearchCard(props) {
       name: "futbol",
       size: "large"
     }),
-    onKeyPress: props.search
+    onKeyPress: function onKeyPress(event) {
+      return props.search(event);
+    }
   })))));
 };
 
@@ -396,11 +394,28 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(SearchLayout)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+      searchby: null
+    });
+
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "search", function (e) {
-      if (e.key === 'Enter') {
-        _routes__WEBPACK_IMPORTED_MODULE_2__["Router"].pushRoute('news');
-        console.log('Route');
+      if (_this.state.searchby != null) {
+        if (e.key === 'Enter') {
+          _routes__WEBPACK_IMPORTED_MODULE_2__["Router"].pushRoute('news');
+          localStorage.setItem('Type', _this.state.searchby);
+          console.log('Route');
+        }
       }
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleSearchBy", function (e, data) {
+      console.log(data.value);
+
+      _this.setState({
+        searchby: data.value
+      });
+
+      _this.forceUpdate();
     });
 
     return _this;
@@ -408,13 +423,13 @@ function (_Component) {
 
   _createClass(SearchLayout, [{
     key: "render",
-    // handleDropDown = (e,data) => {
-    // }
     value: function render() {
+      console.log(this.state.searchby);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "Section-Search"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_cards__WEBPACK_IMPORTED_MODULE_1__["SearchCard"], {
-        search: this.search
+        search: this.search,
+        handleSearchBy: this.handleSearchBy
       }));
     }
   }]);

@@ -3,21 +3,31 @@ import { SearchCard } from '../cards'
 import { Router } from '../../../routes'
 
 class SearchLayout extends Component {
+  state = {
+    searchby: null
+  }
+
   search = e => {
-    if (e.key === 'Enter') {
-      Router.pushRoute('news')
-      console.log('Route')
+    if (this.state.searchby != null) {
+      if (e.key === 'Enter') {
+        Router.pushRoute('news')
+        localStorage.setItem('Type', this.state.searchby)
+        console.log('Route')
+      }
     }
   }
 
-  // handleDropDown = (e,data) => {
-
-  // }
+  handleSearchBy = (e, data) => {
+    console.log(data.value)
+    this.setState({ searchby: data.value })
+    this.forceUpdate()
+  }
 
   render() {
+    console.log(this.state.searchby)
     return (
       <div className="Section-Search">
-        <SearchCard search={this.search} />
+        <SearchCard search={this.search} handleSearchBy={this.handleSearchBy} />
       </div>
     )
   }

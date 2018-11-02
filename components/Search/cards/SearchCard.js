@@ -9,10 +9,9 @@ import {
 } from '../../../node_modules/semantic-ui-react'
 
 const type = [
-  { key: '1', value: 'Football Club', text: 'Football Club' },
-  { key: '2', value: 'Team', text: 'Team' },
-  { key: '3', value: 'Player', text: 'Player' },
-  { key: '4', value: 'News', text: 'News' }
+  { key: '1', value: 'Clubs', text: 'Clubs' },
+  { key: '2', value: 'Players', text: 'Players' },
+  { key: '3', value: 'News', text: 'News' }
 ]
 
 const SearchCard = props => {
@@ -24,10 +23,10 @@ const SearchCard = props => {
             <Dropdown
               style={{ fontSize: '18px' }}
               placeholder="Search By"
-              clearable
               options={type}
               selection
               size="large"
+              onChange={props.handleSearchBy}
             />
           </Grid.Column>
         </Grid.Row>
@@ -38,7 +37,7 @@ const SearchCard = props => {
               type="text"
               size="huge"
               icon={<Icon name="futbol" size="large" />}
-              onKeyPress={props.search}
+              onKeyPress={event => props.search(event)}
             />
           </Grid.Column>
         </Grid.Row>
