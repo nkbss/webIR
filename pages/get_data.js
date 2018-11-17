@@ -2,31 +2,8 @@ import React, { Component } from 'react'
 import fetch from 'isomorphic-fetch'
 
 class news extends Component {
-	/*
-	constructor(props) {
-		super(props)
-		const params = props.url.query
-		console.log(params)
-		this.state = {data: []}
-		this.getDocs = this.getDocs.bind(this)
-		// fetch('http://localhost:9200/_search', {q: `content:${params.q}`})
-		fetch('http://localhost:9200/_search', 
-			{
-				q: `content:${params.q}`,
-				sort:
-				[{
-					'date_str':{"order":"asc"}
-				}]
-			}).then(res => {
-			res.json().then(res => {
-				this.setState({data: res.hits.hits})
-				console.log(res)
-	    })
-		})
-	}
-	*/
 	funcA(res) {
-			this.setState({data: res.hits.hits , total:res.hits.total , time:this.time})
+			this.setState({data: res.hits.hits , total:res.hits.total , time:this.time, page:this.page})
 			console.log(res)
 	}
 
@@ -61,7 +38,7 @@ class news extends Component {
 			query['sort'] = [{'date_str' : {"order":"desc"}}]
 		}
 		let res = await fetch('http://localhost:9200/_search', 
-			{"from" : params.from, "size" : 15,"query":{"bool" : query}})
+			{"from" : params.page, "size" : 15,"query":{"bool" : query}})
 
 		res = await res.json()
 		res = this.funcA(res)
@@ -81,11 +58,12 @@ class news extends Component {
 		d = new Date()
     const stop = d.getTime()
     this.time = stop-start
+    this.page = this.params.page
 	}
 
 	getDocs(type) {
 		if(type=="news"){
-			return [<div><p>{this.state.total},{this.state.time}</p></div>, 
+			return [<div><p>{this.state.total},{this.state.time},{this.state.page}</p></div>, 
 			this.state.data.map(
 				x => <div>
 								<p>{x._source.img}</p>
@@ -96,7 +74,7 @@ class news extends Component {
 					 	</div>
 			)]
 		}
-		return [<div><p>{this.state.total},{this.state.time}</p></div>, 
+		return [<div><p>{this.state.total},{this.state.time}{this.state.page}</p></div>, 
 		this.state.data.map(
 			x => <div>
 							<p>{x._source.img}</p>
