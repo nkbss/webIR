@@ -9,7 +9,7 @@ class news extends Component {
 					total:res.hits.total, 
 					time:this.time, 
 					page:this.page, 
-					maxPage:Math.ceil(res.hits.total/15.0)
+					maxPage:Math.ceil(res.hits.total/20.0)
 				}
 			)
 			console.log(res)
@@ -110,7 +110,7 @@ class news extends Component {
 		this.setState({players:this.players,teams:this.teams})
 	}
 	async getRes() {
-		let res = await this.fetching(this.params, 15, true)
+		let res = await this.fetching(this.params, 20, true)
 		// console.log('hihihi')
 		// console.log(res.hits.total)
 		await this.getTeamPlayer(this.params, res.hits.total)
@@ -133,10 +133,6 @@ class news extends Component {
 		let d = new Date()
     const start = d.getTime()
     this.getRes()
-		// let res = this.fetching(this.params, 15, true)
-		// console.log('hihihi')
-		// console.log(res)
-		//this.getTeamPlayer(this.params, res['hits']['total'])
 		d = new Date()
     const stop = d.getTime()
     this.time = stop-start
