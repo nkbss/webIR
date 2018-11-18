@@ -4,30 +4,26 @@ import { Router } from '../../../routes'
 
 class SearchLayout extends Component {
   state = {
-    searchby: null
+    search: null
   }
 
   search = e => {
-    if (this.state.searchby != null) {
+    if (this.state.search != null) {
       if (e.key === 'Enter') {
-        Router.pushRoute('news')
-        localStorage.setItem('Type', this.state.searchby)
-        console.log('Route')
+        Router.pushRoute('/search')
       }
     }
   }
 
-  handleSearchBy = (e, data) => {
-    console.log(data.value)
-    this.setState({ searchby: data.value })
-    this.forceUpdate()
+  handleSearch = e => {
+    console.log(e.target.value)
+    this.setState({ search: e.target.value })
   }
 
   render() {
-    console.log(this.state.searchby)
     return (
       <div className="Section-Search">
-        <SearchCard search={this.search} handleSearchBy={this.handleSearchBy} />
+        <SearchCard search={this.search} handleSearch={this.handleSearch} />
       </div>
     )
   }

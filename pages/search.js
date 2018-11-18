@@ -4,7 +4,7 @@ import { NewsLayout } from '../components/News/Layout'
 import '../style.css'
 import { HeaderSearchLayout } from '../components/HeaderSearch/layout'
 
-class news extends Component {
+class search extends Component {
   render() {
     return (
       <div>
@@ -15,4 +15,4 @@ class news extends Component {
   }
 }
 
-export default news
+export default search

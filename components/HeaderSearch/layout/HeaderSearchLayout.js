@@ -1,22 +1,27 @@
 import React, { Component } from 'react'
-import { HeaderSearchCard } from '../cards'
+import { HeaderSearchCard, HeaderOptionCard } from '../cards'
+import { FilterByCard } from '../cards/FilterByCard'
 
 class HeaderSearchLayout extends Component {
-  componentDidMount = () => {
-    this.setState({ type: localStorage.getItem('Type') })
-  }
-
-  removeType = () => {
-    localStorage.removeItem('Type')
-  }
-
   state = {
-    type: null
+    filterby: false
   }
+
+  openFilterby = () => {
+    this.setState({ filterby: true })
+  }
+
+  closeFilterby = () => {
+    this.setState({ filterby: false })
+  }
+
   render() {
+    const { filterby } = this.state
+
     return (
       <div className="topHeader">
-        <HeaderSearchCard type={this.state.type} removeType={this.removeType} />
+        <HeaderSearchCard openFilterby={this.openFilterby} />
+        <FilterByCard filterby={filterby} closeFilterby={this.closeFilterby} />
       </div>
     )
   }

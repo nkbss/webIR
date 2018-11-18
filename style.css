@@ -39,3 +39,17 @@
 .topHeader {
   padding-bottom: 70px;
 }
+
+.headersearch-label {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#headersearch-gridrow-search {
+  padding-bottom: 0px;
+  border-bottom: 1px solid #ededed;
+}
+
+#headersearch-gridrow-option {
+  padding-top: 0px;
+}

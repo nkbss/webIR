@@ -106,62 +106,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/semantic-ui-react */ "./node_modules/semantic-ui-react/dist/es/index.js");
-var _jsxFileName = "/Users/kanoktat/Documents/webir/project/components/Header/HeaderCard.js";
 
 
 var image = '../../static/images/football.png';
 
 var HeaderCard = function HeaderCard() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 8
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 9
-    },
-    __self: this
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
+    textAlign: "center"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Row, {
-    columns: "2",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 10
-    },
-    __self: this
+    columns: "2"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column, {
-    width: "7",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 11
-    },
-    __self: this
+    width: "6",
+    style: {
+      paddingRight: '15px'
+    }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Image"], {
     size: "tiny",
     src: image,
-    floated: "right",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 12
-    },
-    __self: this
+    floated: "right"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column, {
     textAlign: "left",
     verticalAlign: "middle",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 14
-    },
-    __self: this
+    style: {
+      paddingLeft: '0px'
+    }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "headText",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 15
-    },
-    __self: this
+    className: "headText"
   }, "Football Update")))));
 };
 
@@ -294,17 +264,9 @@ var type = [{
 var SearchCard = function SearchCard(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
     textAlign: "center"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Row, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Dropdown"], {
-    style: {
-      fontSize: '18px'
-    },
-    placeholder: "Search By",
-    options: type,
-    selection: true,
-    size: "large",
-    onChange: props.handleSearchBy
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Row, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Input"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Row, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Input"], {
     className: "search",
+    placeholder: "What are you interested?",
     type: "text",
     size: "huge",
     icon: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Icon"], {
@@ -313,7 +275,8 @@ var SearchCard = function SearchCard(props) {
     }),
     onKeyPress: function onKeyPress(event) {
       return props.search(event);
-    }
+    },
+    onChange: props.handleSearch
   })))));
 };
 
@@ -395,27 +358,23 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(SearchLayout)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      searchby: null
+      search: null
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "search", function (e) {
-      if (_this.state.searchby != null) {
+      if (_this.state.search != null) {
         if (e.key === 'Enter') {
-          _routes__WEBPACK_IMPORTED_MODULE_2__["Router"].pushRoute('news');
-          localStorage.setItem('Type', _this.state.searchby);
-          console.log('Route');
+          _routes__WEBPACK_IMPORTED_MODULE_2__["Router"].pushRoute('/search');
         }
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleSearchBy", function (e, data) {
-      console.log(data.value);
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleSearch", function (e) {
+      console.log(e.target.value);
 
       _this.setState({
-        searchby: data.value
+        search: e.target.value
       });
-
-      _this.forceUpdate();
     });
 
     return _this;
@@ -424,12 +383,11 @@ function (_Component) {
   _createClass(SearchLayout, [{
     key: "render",
     value: function render() {
-      console.log(this.state.searchby);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "Section-Search"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_cards__WEBPACK_IMPORTED_MODULE_1__["SearchCard"], {
         search: this.search,
-        handleSearchBy: this.handleSearchBy
+        handleSearch: this.handleSearch
       }));
     }
   }]);
