@@ -153,6 +153,22 @@ class news extends Component {
 					 	</div>
 			)]
 		}
+		if(type=="image"){
+			return [details, 
+			this.state.data.map(
+				x => x._source.imgs.map(
+					y => <div>
+									<p>{y}</p>
+									<p>{x._source.title}</p>	
+									<p>{x._source.url}</p>
+							</div>)
+				// <div>
+				// 				<p>{x._source.img}</p>
+				// 				<p>{x._source.title}</p>	
+				// 				<p>{x._source.url}</p>
+				// 		</div>
+			)]
+		}
 		return [details, 
 		this.state.data.map(
 			x => <div>
