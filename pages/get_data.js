@@ -141,16 +141,17 @@ class news extends Component {
 
 	getDocs(type) {
 		const details = <div><p>{this.state.total},{this.state.time},{this.state.page},{this.state.maxPage},{this.state.players},{this.state.teams}</p></div>
-		if(type=="news"){ 
+		if(type=="video"){ 
 			return [details, 
 			this.state.data.map(
-				x => <div>
+				x => x._source.videos.map(
+					y => <div>
+								<p>{y}</p>
 								<p>{x._source.img}</p>
-								<p>{x._source.title}</p>
-								<p>{JSON.stringify(x._source.date_str)}</p>
-								<p>{x._source.content}</p>
+								<p>{x._source.title}</p>	
 								<p>{x._source.url}</p>
-					 	</div>
+						</div>
+				)
 			)]
 		}
 		if(type=="image"){
@@ -161,22 +162,21 @@ class news extends Component {
 									<p>{y}</p>
 									<p>{x._source.title}</p>	
 									<p>{x._source.url}</p>
-							</div>)
-				// <div>
-				// 				<p>{x._source.img}</p>
-				// 				<p>{x._source.title}</p>	
-				// 				<p>{x._source.url}</p>
-				// 		</div>
+							</div>
+				)
 			)]
 		}
 		return [details, 
 		this.state.data.map(
 			x => <div>
 							<p>{x._source.img}</p>
-							<p>{x._source.title}</p>	
+							<p>{x._source.title}</p>
+							<p>{JSON.stringify(x._source.date_str)}</p>
+							<p>{x._source.content}</p>
 							<p>{x._source.url}</p>
-					</div>
+				 	</div>
 		)]
+		
 	}
 
   render() {
