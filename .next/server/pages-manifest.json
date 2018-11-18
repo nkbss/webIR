@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"/_document":"static/development/pages/_document.js","/_app":"static/development/pages/_app.js","/_error":"static/development/pages/_error.js","/index":"static/development/pages/index.js","/search":"static/development/pages/search.js","/":"static/development/pages/index.js"}
-=======
-{"/_document":"static\\development\\pages\\_document.js","/_app":"static\\development\\pages\\_app.js","/_error":"static\\development\\pages\\_error.js","/get_data":"static\\development\\pages\\get_data.js"}
->>>>>>> 311caa96ce715525bfde596074566bb4d5615973
+{"/_document":"static/development/pages/_document.js","/_app":"static/development/pages/_app.js","/_error":"static/development/pages/_error.js","/search":"static/development/pages/search.js","/get_data":"static/development/pages/get_data.js"}

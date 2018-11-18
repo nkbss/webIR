@@ -111,7 +111,6 @@ __webpack_require__.r(__webpack_exports__);
 var image = '../../static/images/football.png';
 
 var HeaderCard = function HeaderCard() {
-<<<<<<< HEAD
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
     textAlign: "center"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Row, {
@@ -121,26 +120,16 @@ var HeaderCard = function HeaderCard() {
     style: {
       paddingRight: '15px'
     }
-=======
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Row, {
-    columns: "2"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column, {
-    width: "7"
->>>>>>> 311caa96ce715525bfde596074566bb4d5615973
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Image"], {
     size: "tiny",
     src: image,
     floated: "right"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column, {
     textAlign: "left",
-<<<<<<< HEAD
     verticalAlign: "middle",
     style: {
       paddingLeft: '0px'
     }
-=======
-    verticalAlign: "middle"
->>>>>>> 311caa96ce715525bfde596074566bb4d5615973
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "headText"
   }, "Football Update")))));
@@ -163,6 +152,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _HeaderCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./HeaderCard */ "./components/Header/HeaderCard.js");
+var _jsxFileName = "/Users/kanoktat/Documents/webir/project/components/Header/HeaderLayout.js";
+
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -198,7 +189,19 @@ function (_Component) {
   _createClass(HeaderLayout, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_HeaderCard__WEBPACK_IMPORTED_MODULE_1__["HeaderCard"], null));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 7
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_HeaderCard__WEBPACK_IMPORTED_MODULE_1__["HeaderCard"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 8
+        },
+        __self: this
+      }));
     }
   }]);
 
@@ -26662,7 +26665,7 @@ function (_Document) {
         rel: "stylesheet",
         href: "https://use.fontawesome.com/releases/v5.4.2/css/all.css",
         integrity: "sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns",
-        crossorigin: "anonymous"
+        crossOrigin: "anonymous"
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("style", null, "\n              html { overflow: auto }\n              body { padding-top: 80px }\n            ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("body", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_document__WEBPACK_IMPORTED_MODULE_2__["Main"], null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_document__WEBPACK_IMPORTED_MODULE_2__["NextScript"], null)));
     }
   }], [{
