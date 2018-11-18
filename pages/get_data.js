@@ -39,17 +39,17 @@ class news extends Component {
 								}
 		let filter_body = []
 		if (params.filter_t != ""){
-			const words = params.filter_t.split("+")
+			const words = params.filter_t.split(".")
 			const len = words.length
 			for (let i=0;i<len;i++){
-				filter_body.append({"term":{"teams":words[i]}})
+				filter_body.push({"term":{"teams":words[i]}})
 			}
 		}
 		if(params.filter_p != ""){
-			const words = params.filter_p.split("+")
+			const words = params.filter_p.split(".")
 			const len = words.length
 			for (let i=0;i<len;i++){
-				filter_body.append({"term":{"players":words[i]}})
+				filter_body.push({"term":{"players":words[i]}})
 			}	
 		}
 		if(filter_body != []){
