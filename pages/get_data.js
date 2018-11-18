@@ -15,10 +15,10 @@ class news extends Component {
 			console.log(res)
 	}
 
-	async fetching(params) {
+	async fetching(params, size, writeState) {
 		let body = {
 				  				"from" : params.page,
-				  				"size" : 15,
+				  				"size" : size,
 								  "query" :
 								  {
 								     "bool" :
@@ -58,7 +58,7 @@ class news extends Component {
 		if(params.sort == "date"){
 			body['sort'] = [{"date":"desc"}]
 		}
-		console.log(body)
+		// console.log(body)
 		let res = await fetch('http://localhost:9200/_search', 
 			{
 				method: "POST",
@@ -72,22 +72,71 @@ class news extends Component {
         referrer: "no-referrer",
 				body:JSON.stringify(body)
 			})
-		console.log(res)
+		// console.log(res)
 		res = await res.json()
-		res = this.funcA(res)
+		if(writeState){
+			this.funcA(res)
+		}
+		return res
+	}
+
+	async getTeamPlayer(params, total) {
+		let res = await this.fetching(this.params, total, false)
+		// console.log('fuck')
+		// console.log(res)
+		res = res.hits.hits
+		const len = res.length
+		for(let i=0;i<len;i++){
+			const teams = res[i]._source.teams
+			const tLen = teams.length
+			for(let j=0;j<tLen;j++){
+				if (!this.teams.includes(teams[j])){
+					this.teams.push(teams[j])
+				}
+			}
+			const players = res[i]._source.players
+			const pLen = players.length
+			for(let j=0;j<tLen;j++){
+				if (!this.players.includes(players[j])){
+					this.players.push(players[j])
+				}
+			}	
+
+		}
+		
+	}
+
+	funcB() {
+		this.setState({players:this.players,teams:this.teams})
+	}
+	async getRes() {
+		let res = await this.fetching(this.params, 15, true)
+		// console.log('hihihi')
+		// console.log(res.hits.total)
+		await this.getTeamPlayer(this.params, res.hits.total)
+		this.funcB(res)
+		// console.log(this.players)
+		// console.log(this.teams)
 	}
 
 	constructor(props) {
 		super(props)
 		this.params = props.url.query
-		console.log(this.params)
+		// console.log(this.params)
 		this.state = {data: []}
+		this.teams = []
+		this.players = []
 		this.getDocs = this.getDocs.bind(this)
 		this.funcA = this.funcA.bind(this)
 		this.fetching = this.fetching.bind(this)
+		this.getTeamPlayer = this.getTeamPlayer.bind(this)
 		let d = new Date()
     const start = d.getTime()
-		this.fetching(this.params)
+    this.getRes()
+		// let res = this.fetching(this.params, 15, true)
+		// console.log('hihihi')
+		// console.log(res)
+		//this.getTeamPlayer(this.params, res['hits']['total'])
 		d = new Date()
     const stop = d.getTime()
     this.time = stop-start
@@ -95,7 +144,7 @@ class news extends Component {
 	}
 
 	getDocs(type) {
-		const details = <div><p>{this.state.total},{this.state.time},{this.state.page},{this.state.maxPage}</p></div>
+		const details = <div><p>{this.state.total},{this.state.time},{this.state.page},{this.state.maxPage},{this.state.players},{this.state.teams}</p></div>
 		if(type=="news"){ 
 			return [details, 
 			this.state.data.map(
@@ -116,7 +165,6 @@ class news extends Component {
 							<p>{x._source.url}</p>
 					</div>
 		)]
-
 	}
 
   render() {
