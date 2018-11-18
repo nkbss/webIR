@@ -3,43 +3,76 @@ import fetch from 'isomorphic-fetch'
 
 class news extends Component {
 	funcA(res) {
-			this.setState({data: res.hits.hits , total:res.hits.total , time:this.time, page:this.page})
+			this.setState(
+				{
+					data:res.hits.hits, 
+					total:res.hits.total, 
+					time:this.time, 
+					page:this.page, 
+					maxPage:Math.ceil(res.hits.total/15.0)
+				}
+			)
 			console.log(res)
 	}
 
 	async fetching(params) {
-		let query = {
-						"must" : [
-						{
-							"bool" : {
-								"should" : [
-									{"match" : {"title":params.q}},
-									{"match" : {"content":params.q}}
-								]
-							}
-						}
-						]
-					}
+		let body = {
+				  				"from" : params.page,
+				  				"size" : 15,
+								  "query" :
+								  {
+								     "bool" :
+								     {
+								        "must" : 
+								        {
+								          "bool" : 
+								          {
+								            "should" : 
+								            [
+								              {"match" : {"title":params.q}},
+								              {"match" : {"content":params.q}}
+								            ]
+								          }
+								        }
+								      }
+								  }
+								}
+		let filter_body = []
 		if (params.filter_t != ""){
 			const words = params.filter_t.split("+")
 			const len = words.length
 			for (let i=0;i<len;i++){
-				query["must"].push({"match" : {"teams":words[i]}})
+				filter_body.append({"term":{"teams":words[i]}})
 			}
 		}
 		if(params.filter_p != ""){
 			const words = params.filter_p.split("+")
 			const len = words.length
 			for (let i=0;i<len;i++){
-				query["must"].push({"match" : {"players":words[i]}})
+				filter_body.append({"term":{"players":words[i]}})
 			}	
 		}
-		if(params.sort == "date"){
-			query['sort'] = [{'date_str' : {"order":"desc"}}]
+		if(filter_body != []){
+			body['query']['bool']['filter'] = {"bool":{"should":filter_body}}
 		}
+		if(params.sort == "date"){
+			body['sort'] = [{"date":"desc"}]
+		}
+		console.log(body)
 		let res = await fetch('http://localhost:9200/_search', 
-			{"from" : params.page, "size" : 15,"query":{"bool" : query}})
-
+			{
+				method: "POST",
+				mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+        },
+        redirect: "follow",
+        referrer: "no-referrer",
+				body:JSON.stringify(body)
+			})
+		console.log(res)
 		res = await res.json()
 		res = this.funcA(res)
 	}
@@ -62,8 +95,9 @@ class news extends Component {
 	}
 
 	getDocs(type) {
-		if(type=="news"){
-			return [<div><p>{this.state.total},{this.state.time},{this.state.page}</p></div>, 
+		const details = <div><p>{this.state.total},{this.state.time},{this.state.page},{this.state.maxPage}</p></div>
+		if(type=="news"){ 
+			return [details, 
 			this.state.data.map(
 				x => <div>
 								<p>{x._source.img}</p>
@@ -74,7 +108,7 @@ class news extends Component {
 					 	</div>
 			)]
 		}
-		return [<div><p>{this.state.total},{this.state.time}{this.state.page}</p></div>, 
+		return [details, 
 		this.state.data.map(
 			x => <div>
 							<p>{x._source.img}</p>
