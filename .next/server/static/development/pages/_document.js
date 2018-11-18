@@ -26651,7 +26651,7 @@ function (_Document) {
         rel: "stylesheet",
         href: "https://use.fontawesome.com/releases/v5.4.2/css/all.css",
         integrity: "sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns",
-        crossorigin: "anonymous"
+        crossOrigin: "anonymous"
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("style", null, "\n              html { overflow: auto }\n              body { padding-top: 80px }\n            ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("body", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_document__WEBPACK_IMPORTED_MODULE_2__["Main"], null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_document__WEBPACK_IMPORTED_MODULE_2__["NextScript"], null)));
     }
   }], [{
