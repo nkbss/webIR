@@ -13,6 +13,23 @@
     ],
     "/get_data": [
       "static/runtime/webpack.js",
+<<<<<<< HEAD
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
+      "static/runtime/main.js"
+    ],
+    "/search": [
+      "static/runtime/webpack.js",
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
+      "static/runtime/main.js"
+    ],
+    "/": [
+      "static/runtime/webpack.js",
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
+=======
+>>>>>>> 311caa96ce715525bfde596074566bb4d5615973
       "static/runtime/main.js"
     ]
   }

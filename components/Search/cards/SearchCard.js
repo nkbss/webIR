@@ -20,24 +20,14 @@ const SearchCard = props => {
       <Grid textAlign="center">
         <Grid.Row>
           <Grid.Column>
-            <Dropdown
-              style={{ fontSize: '18px' }}
-              placeholder="Search By"
-              options={type}
-              selection
-              size="large"
-              onChange={props.handleSearchBy}
-            />
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column>
             <Input
               className="search"
+              placeholder="What are you interested?"
               type="text"
               size="huge"
               icon={<Icon name="futbol" size="large" />}
               onKeyPress={event => props.search(event)}
+              onChange={props.handleSearch}
             />
           </Grid.Column>
         </Grid.Row>
