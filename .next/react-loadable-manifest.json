@@ -1,20 +1,4 @@
 {
-  "../style.css": [
-    {
-      "id": "./style.css",
-      "name": "./style.css",
-      "file": "static/chunks/styles.js",
-      "publicPath": "static/chunks/styles.js"
-    }
-  ],
-  "undefined": [
-    {
-      "id": 4,
-      "name": null,
-      "file": "static/chunks/styles.js",
-      "publicPath": "static/chunks/styles.js"
-    }
-  ],
   "./noop": [
     {
       "id": "./node_modules/next/dist/client/noop.js",
