@@ -16,7 +16,7 @@ class news extends Component {
 	}
 
 	async fetching(params, size, writeState) {
-		let body = {
+		let body = await {
 				  				"from" : params.page,
 				  				"size" : size,
 								  "query" :
@@ -38,21 +38,23 @@ class news extends Component {
 								  }
 								}
 		let filter_body = []
-		if (params.filter_t != ""){
+		if (params.filter_t != "" && writeState){
 			const words = params.filter_t.split(".")
 			const len = words.length
 			for (let i=0;i<len;i++){
 				filter_body.push({"term":{"teams":words[i]}})
 			}
 		}
-		if(params.filter_p != ""){
+		if(params.filter_p != "" && writeState){
 			const words = params.filter_p.split(".")
 			const len = words.length
 			for (let i=0;i<len;i++){
 				filter_body.push({"term":{"players":words[i]}})
 			}	
 		}
-		if(filter_body != []){
+		// console.log(filter_body)
+		if(filter_body != [] && writeState){
+			// console.log('hihihihihihihi')
 			body['query']['bool']['filter'] = {"bool":{"should":filter_body}}
 		}
 		if(params.sort == "date"){
@@ -81,9 +83,11 @@ class news extends Component {
 	}
 
 	async getTeamPlayer(params, total) {
+		// console.log(total)
 		let res = await this.fetching(this.params, total, false)
 		// console.log('fuck')
-		// console.log(res)
+		// console.log(res.hits.total)
+		res = await this.fetching(this.params, res.hits.total, false)
 		res = res.hits.hits
 		const len = res.length
 		for(let i=0;i<len;i++){
