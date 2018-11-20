@@ -9,16 +9,16 @@ class news extends Component {
 					total:res.hits.total, 
 					time:this.time, 
 					page:this.page, 
-					maxPage:Math.ceil(res.hits.total/15.0)
+					maxPage:Math.ceil(res.hits.total/20.0)
 				}
 			)
 			console.log(res)
 	}
 
-	async fetching(params) {
-		let body = {
+	async fetching(params, size, writeState) {
+		let body = await {
 				  				"from" : params.page,
-				  				"size" : 15,
+				  				"size" : size,
 								  "query" :
 								  {
 								     "bool" :
@@ -38,27 +38,29 @@ class news extends Component {
 								  }
 								}
 		let filter_body = []
-		if (params.filter_t != ""){
-			const words = params.filter_t.split("+")
+		if (params.filter_t != "" && writeState){
+			const words = params.filter_t.split(".")
 			const len = words.length
 			for (let i=0;i<len;i++){
-				filter_body.append({"term":{"teams":words[i]}})
+				filter_body.push({"term":{"teams":words[i]}})
 			}
 		}
-		if(params.filter_p != ""){
-			const words = params.filter_p.split("+")
+		if(params.filter_p != "" && writeState){
+			const words = params.filter_p.split(".")
 			const len = words.length
 			for (let i=0;i<len;i++){
-				filter_body.append({"term":{"players":words[i]}})
+				filter_body.push({"term":{"players":words[i]}})
 			}	
 		}
-		if(filter_body != []){
+		// console.log(filter_body)
+		if(filter_body != [] && writeState){
+			// console.log('hihihihihihihi')
 			body['query']['bool']['filter'] = {"bool":{"should":filter_body}}
 		}
 		if(params.sort == "date"){
 			body['sort'] = [{"date":"desc"}]
 		}
-		console.log(body)
+		// console.log(body)
 		let res = await fetch('http://localhost:9200/_search', 
 			{
 				method: "POST",
@@ -72,22 +74,69 @@ class news extends Component {
         referrer: "no-referrer",
 				body:JSON.stringify(body)
 			})
-		console.log(res)
+		// console.log(res)
 		res = await res.json()
-		res = this.funcA(res)
+		if(writeState){
+			this.funcA(res)
+		}
+		return res
+	}
+
+	async getTeamPlayer(params, total) {
+		// console.log(total)
+		let res = await this.fetching(this.params, total, false)
+		// console.log('fuck')
+		// console.log(res.hits.total)
+		res = await this.fetching(this.params, res.hits.total, false)
+		res = res.hits.hits
+		const len = res.length
+		for(let i=0;i<len;i++){
+			const teams = res[i]._source.teams
+			const tLen = teams.length
+			for(let j=0;j<tLen;j++){
+				if (!this.teams.includes(teams[j])){
+					this.teams.push(teams[j])
+				}
+			}
+			const players = res[i]._source.players
+			const pLen = players.length
+			for(let j=0;j<tLen;j++){
+				if (!this.players.includes(players[j])){
+					this.players.push(players[j])
+				}
+			}	
+
+		}
+		
+	}
+
+	funcB() {
+		this.setState({players:this.players,teams:this.teams})
+	}
+	async getRes() {
+		let res = await this.fetching(this.params, 20, true)
+		// console.log('hihihi')
+		// console.log(res.hits.total)
+		await this.getTeamPlayer(this.params, res.hits.total)
+		this.funcB(res)
+		// console.log(this.players)
+		// console.log(this.teams)
 	}
 
 	constructor(props) {
 		super(props)
 		this.params = props.url.query
-		console.log(this.params)
+		// console.log(this.params)
 		this.state = {data: []}
+		this.teams = []
+		this.players = []
 		this.getDocs = this.getDocs.bind(this)
 		this.funcA = this.funcA.bind(this)
 		this.fetching = this.fetching.bind(this)
+		this.getTeamPlayer = this.getTeamPlayer.bind(this)
 		let d = new Date()
     const start = d.getTime()
-		this.fetching(this.params)
+    this.getRes()
 		d = new Date()
     const stop = d.getTime()
     this.time = stop-start
@@ -95,28 +144,43 @@ class news extends Component {
 	}
 
 	getDocs(type) {
-		const details = <div><p>{this.state.total},{this.state.time},{this.state.page},{this.state.maxPage}</p></div>
-		if(type=="news"){ 
+		const details = <div><p>{this.state.total},{this.state.time},{this.state.page},{this.state.maxPage},{this.state.players},{this.state.teams}</p></div>
+		if(type=="video"){ 
 			return [details, 
 			this.state.data.map(
-				x => <div>
+				x => x._source.videos.map(
+					y => <div>
+								<p>{y}</p>
 								<p>{x._source.img}</p>
-								<p>{x._source.title}</p>
-								<p>{JSON.stringify(x._source.date_str)}</p>
-								<p>{x._source.content}</p>
+								<p>{x._source.title}</p>	
 								<p>{x._source.url}</p>
-					 	</div>
+						</div>
+				)
+			)]
+		}
+		if(type=="image"){
+			return [details, 
+			this.state.data.map(
+				x => x._source.imgs.map(
+					y => <div>
+									<p>{y}</p>
+									<p>{x._source.title}</p>	
+									<p>{x._source.url}</p>
+							</div>
+				)
 			)]
 		}
 		return [details, 
 		this.state.data.map(
 			x => <div>
 							<p>{x._source.img}</p>
-							<p>{x._source.title}</p>	
+							<p>{x._source.title}</p>
+							<p>{JSON.stringify(x._source.date_str)}</p>
+							<p>{x._source.content}</p>
 							<p>{x._source.url}</p>
-					</div>
+				 	</div>
 		)]
-
+		
 	}
 
   render() {
