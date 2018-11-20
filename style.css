@@ -2,6 +2,11 @@
   padding-top: 50px;
 }
 
+#headersearch-image {
+  width: 100px;
+  height: 80px;
+}
+
 .search {
   width: 600px;
   height: 50px;
@@ -9,10 +14,6 @@
 
 .searchType {
   width: 100px;
-}
-
-.Section-News {
-  padding-top: 50px;
 }
 
 .NewsCard {
@@ -52,4 +53,29 @@
 
 #headersearch-gridrow-option {
   padding-top: 0px;
+}
+
+#headersearch-dropdown {
+  font-size: 15px;
+  font-weight: normal;
+}
+
+#newscard-grid {
+  padding-bottom: 0px;
+}
+
+.newscard-header-label {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.newscard-date-label {
+  font-size: 18px;
+  color: grey;
+}
+
+.pagination-section {
+  text-align: center;
+  padding-top: 20px;
+  margin-bottom: 20px;
 }

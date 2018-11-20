@@ -16,12 +16,12 @@ const HeaderSearchCard = props => {
       <Menu fixed="top" borderless pointing>
         <Grid verticalAlign="middle" style={{ width: '100%' }}>
           <Grid.Row columns={3} id="headersearch-gridrow-search">
-            <Grid.Column width={2}>
-              <Menu.Item>
-                <Image src={image} size="tiny" href="/" />
+            <Grid.Column width={1}>
+              <Menu.Item id="headersearch-image">
+                <Image src={image} size="small" href="/" />
               </Menu.Item>
             </Grid.Column>
-            <Grid.Column>
+            <Grid.Column width={4}>
               <Menu.Item>
                 <label
                   style={{
@@ -40,6 +40,8 @@ const HeaderSearchCard = props => {
                   type="text"
                   size="huge"
                   icon={<Icon name="futbol" size="large" />}
+                  onKeyPress={event => props.search(event)}
+                  onChange={props.handleSearch}
                 />
               </Menu.Item>
             </Grid.Column>
@@ -47,17 +49,17 @@ const HeaderSearchCard = props => {
           <Grid.Row columns={7} id="headersearch-gridrow-option">
             <Grid.Column width={2} />
             <Grid.Column width={2}>
-              <Menu.Item>
+              <Menu.Item onClick={() => props.handleRoute('news')}>
                 <label className="headersearch-label">NEWS</label>
               </Menu.Item>
             </Grid.Column>
             <Grid.Column width={2}>
-              <Menu.Item>
+              <Menu.Item onClick={() => props.handleRoute('image')}>
                 <label className="headersearch-label">IMAGE</label>
               </Menu.Item>
             </Grid.Column>
             <Grid.Column width={2}>
-              <Menu.Item>
+              <Menu.Item onClick={() => props.handleRoute('video')}>
                 <label className="headersearch-label">VIDEO</label>
               </Menu.Item>
             </Grid.Column>
@@ -68,7 +70,14 @@ const HeaderSearchCard = props => {
               </Menu.Item>
             </Grid.Column>
             <Grid.Column width={2}>
-              {/* <Dropdown>Sort by</Dropdown> */}
+              <Dropdown text="Sort by" pointing className="headersearch-label">
+                <Dropdown.Menu>
+                  <Dropdown.Item id="headersearch-dropdown">
+                    Relevant
+                  </Dropdown.Item>
+                  <Dropdown.Item id="headersearch-dropdown">Time</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </Grid.Column>
           </Grid.Row>
         </Grid>

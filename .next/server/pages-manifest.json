@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"/_document":"static/development/pages/_document.js","/_app":"static/development/pages/_app.js","/_error":"static/development/pages/_error.js","/search":"static/development/pages/search.js","/get_data":"static/development/pages/get_data.js"}
-=======
-{"/_document":"static\\development\\pages\\_document.js","/_app":"static\\development\\pages\\_app.js","/_error":"static\\development\\pages\\_error.js","/get_data":"static\\development\\pages\\get_data.js"}
->>>>>>> f5c36f905634373987b223b389093236f343613c
+{"/_document":"static/development/pages/_document.js","/_app":"static/development/pages/_app.js","/_error":"static/development/pages/_error.js","/search":"static/development/pages/search.js","/video":"static/development/pages/video.js","/image":"static/development/pages/image.js"}

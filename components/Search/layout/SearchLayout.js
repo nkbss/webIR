@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { SearchCard } from '../cards'
-import { Router } from '../../../routes'
-
+import Router from 'next/router'
 class SearchLayout extends Component {
   state = {
     search: null
@@ -10,7 +9,7 @@ class SearchLayout extends Component {
   search = e => {
     if (this.state.search != null) {
       if (e.key === 'Enter') {
-        Router.pushRoute('/search')
+        Router.push('/search')
       }
     }
   }

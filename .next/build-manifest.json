@@ -1,6 +1,6 @@
 {
   "devFiles": [
-    "static/development/dll/dll_67211bc3619cb7902ee2.js"
+    "static/development/dll/dll_86d7de3159d32d38a4d2.js"
   ],
   "pages": {
     "/_app": [
@@ -11,11 +11,19 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/get_data": [
+    "/search": [
       "static/runtime/webpack.js",
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
       "static/runtime/main.js"
     ],
-    "/search": [
+    "/image": [
+      "static/runtime/webpack.js",
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
+      "static/runtime/main.js"
+    ],
+    "/video": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",
