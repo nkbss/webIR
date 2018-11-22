@@ -97,8 +97,10 @@ const getRes = async(params) => {
 	let d = new Date()
 	const start = d.getTime()
 	let size = 20
-	if(params.type !== "news"){
+	if(params.type === "videos"){
 		size = 30
+	}else if(params.type === "images"){
+		size = 10
 	}
 	let res = await fetching(params, size, true)
 	// console.log('hihihi')
@@ -127,7 +129,19 @@ const getRes = async(params) => {
 		}
 		return {res:videos_res,time:time,cur_page:params.page,max_page:max_page,total:total,filter_teams:teams_players[0],filter_players:teams_players[1]}
 	} else if (params.type==="image"){
-		return {res:res,time:time,cur_page:params.page,max_page:max_page,total:total,filter_teams:teams_players[0],filter_players:teams_players[1]}
+		const images_res = []
+		const len_images = res.length
+		for(let i=0;i<len_images;i++){
+			const len_cur_images = res[i]["_source"]["imgs"].length
+			for(let j=0;j<len_cur_images;j++){
+				images_res.push({
+					img:res[i]["_source"]["imgs"][j],
+					title:res[i]["_source"]["title"],
+					url:res[i]["_source"]["url"]
+				})
+			}
+		}
+		return {res:images_res,time:time,cur_page:params.page,max_page:max_page,total:total,filter_teams:teams_players[0],filter_players:teams_players[1]}
 	}
 	const news_res = []
 	const len_news = res.length
