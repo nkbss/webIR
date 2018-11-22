@@ -4,12 +4,18 @@ import Router from 'next/router'
 class SearchLayout extends Component {
   state = {
     search: null
+    // query: {
+
+    // }
   }
 
   search = e => {
     if (this.state.search != null) {
       if (e.key === 'Enter') {
-        Router.push('/search')
+        Router.push({
+          pathname:'/search',
+          query:{type:'news',q:this.state.search,filter_t:'',filter_p:'',sort:'',page:0}
+        })
       }
     }
   }
