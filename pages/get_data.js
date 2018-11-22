@@ -42,7 +42,7 @@ const fetching = async (params, size, writeState) => {
 		// console.log('hihihihihihihi')
 		body["query"]["bool"]["filter"] = {"bool":{"should":filter_body}}
 	}
-	if(params.sort == "date"){
+	if(params.sort == "Relevant"){
 		body["sort"] = [{"date":"desc"}]
 	}
 	// console.log(body)
