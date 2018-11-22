@@ -12,8 +12,15 @@ class VideoLayout extends Component {
   }
 
   state = {
-    resultsearch: null
+    resultsearch : null,
+    maxpage:null,
+    filter_t:null,
+    filter_p:null
   } 
+
+  handleUrl = (url) =>{
+    console.log(url)
+  }
 
   getResultSearch = () => {
 
@@ -21,7 +28,10 @@ class VideoLayout extends Component {
       console.log(res)
       console.log(res.res)
       this.setState({
-        resultsearch:res.res
+        resultsearch:res.res,
+        maxpage:res.max_page,
+        filter_t:res.filter_teams,
+        filter_p:res.filter_players
       })
     })
   }
@@ -30,25 +40,27 @@ class VideoLayout extends Component {
     
     return (
       <div>
-        <HeaderSearchLayout handlePage={this.props.handlePage} query={this.props.query} />
+        <HeaderSearchLayout handlePage={this.props.handlePage} query={this.props.query} filter_t={this.state.filter_t} filter_p={this.state.filter_p}  />
         <Grid>
         
       <Grid.Row columns={3}>
-        <Grid.Column width={1} />
-        <Grid.Column width={14}>
+        <Grid.Column width={2} />
+        <Grid.Column width={12}>
           <Card.Group itemsPerRow={4}>
           {this.state.resultsearch != null ? 
           this.state.resultsearch.map((data,index)=>{
               return(
                 <div>
-                  <VideoCard key={index} video={data.video} title={data.title.slice(0,20)} cuturl={data.url.slice(0,20)+'...'} url={data.url} />
+                  <VideoCard key={index} video={data.video} title={data.title.slice(0,70)} cuturl={data.url.slice(0,70)+'...'} url={data.url} image={data.img}
+                    handleUrl={this.handleUrl}
+                  />
                 </div>
               )
           })
           :null}
             </Card.Group>
         </Grid.Column>
-        <Grid.Column width={1} />
+        <Grid.Column width={2} />
       </Grid.Row>
     </Grid>
         

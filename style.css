@@ -89,6 +89,7 @@
   width: 290px;
   margin-right: 20px;
   margin-bottom: 20px;
+  word-wrap: break-word;
 }
 
 #imagecard-image {
@@ -101,6 +102,27 @@
 }
 
 .filterby-title {
-  font-size: 30px;
+  font-size: 35px;
   font-weight: bold;
+}
+
+#image-content {
+  width: 290px;
+  height: 300px;
+}
+
+#video-image{
+  height: 200px;
+}
+
+#video-card{
+  margin-right: 20px;
+  margin-bottom: 20px;
+  word-wrap: break-word;
+}
+
+#headersearch-item {
+  width: 100%;
+   display: table;
+   text-align: center;
 }

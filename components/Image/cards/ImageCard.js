@@ -12,9 +12,9 @@ const ImageCard = (props) => {
                 id="imagecard-image"
                 centered
               />
-              <Card.Content extra textAlign="center">
+              <Card.Content extra textAlign="center" id="image-content">
                 <Card.Header>{props.title}</Card.Header>
-                <Card.Description>
+                <Card.Description >
                   {props.url}
                 </Card.Description>
               </Card.Content>
