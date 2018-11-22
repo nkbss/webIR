@@ -3,6 +3,7 @@ import { VideoCard } from '../cards'
 import { PaginationLayout } from '../../Pagination'
 import { Grid,Card } from 'semantic-ui-react';
 import getRes from '../../../pages/get_data'
+import { HeaderSearchLayout } from '../../HeaderSearch/layout';
 
 class VideoLayout extends Component {
 
@@ -29,6 +30,7 @@ class VideoLayout extends Component {
     
     return (
       <div>
+        <HeaderSearchLayout handlePage={this.props.handlePage} query={this.props.query} />
         <Grid>
         
       <Grid.Row columns={3}>

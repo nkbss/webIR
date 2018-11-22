@@ -99,3 +99,8 @@
 #newscard-image{
   height: 130px;
 }
+
+.filterby-title {
+  font-size: 30px;
+  font-weight: bold;
+}

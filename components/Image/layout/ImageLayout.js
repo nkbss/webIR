@@ -4,6 +4,7 @@ import { ImageCard } from '../cards'
 import getRes from '../../../pages/get_data';
 import { Grid,Card } from 'semantic-ui-react';
 import { PaginationLayout } from '../../Pagination';
+import { HeaderSearchLayout } from '../../HeaderSearch/layout';
 class ImageLayout extends Component {
 
   componentDidMount = () => {
@@ -31,6 +32,7 @@ class ImageLayout extends Component {
   render() {
     return (
       <div>
+        <HeaderSearchLayout handlePage={this.props.handlePage} query={this.props.query} />
       <Grid>
       <Grid.Row columns={3}>
         <Grid.Column width={2} />

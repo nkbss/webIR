@@ -34,20 +34,20 @@ state = {
 
     return (
       <div>
-        <HeaderSearchLayout handlePage={this.handlePage} query={this.state} />
+      
         {this.state.type === 'news'? 
           <div>
-            <NewsLayout query={this.state} />
+            <NewsLayout query={this.state} handlePage={this.handlePage} />
           </div>
         : null}
         {this.state.type === 'image' ? 
           <div>
-            <ImageLayout query={this.state}/>
+            <ImageLayout query={this.state} handlePage={this.handlePage}/>
           </div>
         :null}
         {this.state.type === 'video' ? 
           <div>
-            <VideoLayout query={this.state} />
+            <VideoLayout query={this.state} handlePage={this.handlePage} />
           </div>
         :null}
     

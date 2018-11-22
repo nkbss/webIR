@@ -6,7 +6,11 @@ class HeaderSearchLayout extends Component {
 
   state = {
     filterby: false,
-    search:null
+    search:null,
+    filter_t:[],
+    filter_p:[],
+    filterbyt:null,
+    filterbyp:null
   }
 
 
@@ -19,6 +23,16 @@ class HeaderSearchLayout extends Component {
         }).then(location.reload())
       }
     }
+  }
+
+  handleFilterbyt = (e,{value}) =>{
+ 
+    this.setState({filterbyt:value})
+  }
+
+  handleFilterbyp = (e,{value}) =>{
+  
+    this.setState({filterbyp:value })
   }
 
   handleSearch = e => {
@@ -40,7 +54,36 @@ class HeaderSearchLayout extends Component {
     }).then(location.reload())
   }
 
+
+  getOption = () => {
+      for(let i=0;i<this.props.filter_t.length;i++){
+        this.state.filter_t.push({'key':i,'value':this.props.filter_t[i],'text':this.props.filter_t[i]})
+      }
+      for(let i=0;i<this.props.filter_p.length;i++){
+        this.state.filter_p.push({'key':i,'value':this.props.filter_p[i],'text':this.props.filter_p[i]})
+      }
+  
+  }
+
+  filterBy = () => {
+    this.setState({filterby:false})
+    Router.push({
+      pathname:'/search',
+      query:{
+        type:this.props.query.type,
+        q:this.props.query.q,
+        filter_t:this.state.filterbyt,
+        filter_p:this.state.filterbyp,
+        sort:this.props.query.sort,
+        page:0
+      }
+    }).then(location.reload())
+  }
+
+
   openFilterby = () => {
+    this.getOption()
+    // console.log(this.state.filter_t)
     this.setState({ filterby: true })
   }
 
@@ -49,8 +92,11 @@ class HeaderSearchLayout extends Component {
   }
 
   render() {
+    // console.log(this.props.filter_t)
     const { filterby } = this.state
     console.log(this.props.query)
+    // console.log(this.props.filter_t)
+    // console.log(this.props.filter_p)
     return (
       <div className="topHeader">
         <HeaderSearchCard
@@ -61,7 +107,9 @@ class HeaderSearchLayout extends Component {
           search={this.search}
           handleSort={this.handleSort}
         />
-        <FilterByCard filterby={filterby} closeFilterby={this.closeFilterby} />
+        <FilterByCard filterby={filterby} closeFilterby={this.closeFilterby} filter_t={this.state.filter_t} filter_p={this.state.filter_p}
+          handleFilterbyt={this.handleFilterbyt} handleFilterbyp={this.handleFilterbyp} filterBy={this.filterBy}
+        />
       </div>
     )
   }
