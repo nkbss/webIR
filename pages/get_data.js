@@ -61,7 +61,7 @@ class news extends Component {
 			body['sort'] = [{"date":"desc"}]
 		}
 		// console.log(body)
-		let res = await fetch('http://localhost:9200/_search', 
+		let res = await fetch('http://orion.mikelab.net:55557/_search',//('http://localhost:9200/_search', 
 			{
 				method: "POST",
 				mode: "cors",
