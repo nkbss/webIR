@@ -16,15 +16,12 @@
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",
       "static/runtime/main.js"
-<<<<<<< HEAD
     ],
     "/image": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",
       "static/runtime/main.js"
-=======
->>>>>>> 4af44f15696fd9f7554f2a310e3509663d27b1cc
     ]
   }
 }
