@@ -96,7 +96,7 @@ const getTeamPlayer = async(params, total) => {
 const getRes = async(params) => {
 	let d = new Date()
 	const start = d.getTime()
-	const res = await fetching(params, 20, true)
+	let res = await fetching(params, 20, true)
 	// console.log('hihihi')
 	// console.log(res.hits.total)
 	const teams_players = await getTeamPlayer(params, res.hits.total)
@@ -104,12 +104,40 @@ const getRes = async(params) => {
 	// console.log(this.teams)
 	const stop = d.getTime()
 	const max_page = Math.ceil(res.hits.total/20)
-	if(params.type==="videos"){
-		return {res:res.hits.hits,time:stop-start,cur_page:params.page,max_page:max_page,total:res.hits.total,filter_teams:teams_players[0],filter_players:teams_players[1]}
+	const total = res.hits.total
+	const time = stop - start
+	res = res.hits.hits
+	if(params.type==="video"){
+		const videos_res = []
+		const len_videos = res.length
+		for(let i=0;i<len_videos;i++){
+			const len_cur_videos = res[i]["videos"]
+			for(let j=0;j<len_cur_videos;j++) {
+				console.log(res[i])
+				videos_res.push({
+					video:res[i]["_source"]["videos"][j],
+					img:res[i]["_source"]["img"],
+					title:res[i]["_source"]["title"],
+					url:res[i]["_source"]["url"]
+				})
+			}
+		}
+		return {res:videos_res,time:time,cur_page:params.page,max_page:max_page,total:total,filter_teams:teams_players[0],filter_players:teams_players[1]}
 	} else if (params.type==="image"){
-		return {res:res.hits.hits,time:stop-start,cur_page:params.page,max_page:max_page,total:res.hits.total,filter_teams:teams_players[0],filter_players:teams_players[1]}
+		return {res:res,time:time,cur_page:params.page,max_page:max_page,total:total,filter_teams:teams_players[0],filter_players:teams_players[1]}
 	}
-	return {res:res.hits.hits,time:stop-start,cur_page:params.page,max_page:max_page,total:res.hits.total,filter_teams:teams_players[0],filter_players:teams_players[1]}
+	const news_res = []
+	const len_news = res.length
+	for(let i=0;i<len_news;i++){
+		news_res.push({
+			img:res[i]["_source"]["img"],
+			title:res[i]["_source"]["title"],
+			date_str:JSON.stringify(res[i]["_source"]["date_str"]),
+			content:res[i]["_source"]["content"],
+			url:res[i]["_source"]["url"]
+		})
+	}
+	return {res:news_res,time:time,cur_page:params.page,max_page:max_page,total:total,filter_teams:teams_players[0],filter_players:teams_players[1]}
 }
 
 const main = async () => {
