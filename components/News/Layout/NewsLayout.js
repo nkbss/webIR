@@ -1,48 +1,44 @@
 import React, { Component } from 'react'
 import { NewsCard } from '../Cards'
 import { PaginationLayout } from '../../Pagination'
+import getRes from '../../../pages/get_data';
+import Router from 'next/router'
 
 class NewsLayout extends Component {
 
 
+    state = {
+      resultsearch : null
+    }
   
   componentDidMount = () => {
-   
     this.getResultSearch()
-      
   }
 
+  handleUrl = (url) => {
+    console.log(url)
+  }
 
   getResultSearch = () => {
-    console.log(this.props.query.q)
-    fetch(
-      'http://orion.mikelab.net:55557/_search'+'?q='+this.props.query.q
-                                                                                                                   
-        // '?q=' +
-        // this.state.q 
-        // +
-        // '?type=' +
-        // this.state.type +
-        // '?filter_t=' +
-        // this.state.filter_t +
-        // '?filter_p=' +
-        // this.state.filter +
-        // '?sort=' +
-        // this.state.sort +
-        // '?page=' +
-        // this.state.page
-    ).then((res) => res.json()).then((res) => console.log(res.hits.hits))
-    
+    getRes({"type":this.props.query.type, "q":this.props.query.q, "filter_t":this.props.query.filter_t, "filter_p":this.props.query.filter_p, "sort":this.props.query.sort, "page":this.props.query.page}).then(res => {
+      this.setState({
+        resultsearch:res.res
+      })
+    })
   }
 
-  render() {
   
+
+  render() {
+    console.log(this.state.resultsearch)
     return (
       <div>
-        <NewsCard />
-        <NewsCard />
-        <NewsCard />
-        <PaginationLayout />
+        { this.state.resultsearch!= null ? this.state.resultsearch.map((data,index)=>{
+          return(
+            <NewsCard key={index} img={data._source.img} date={data._source.date_str} title={data._source.title} content={data._source.content.slice(0,270)+'...'} url={data._source.url}  handleUrl={this.handleUrl} />
+          )
+        }) : null}
+        <PaginationLayout query={this.props.query} />
       </div>
     )
   }
