@@ -8,7 +8,7 @@ import getRes from './get_data'
 class Test extends Component {
     constructor(props) {
         super(props)
-        getRes({"type":"news", "q":"messi", "filter_t":"", "filter_p":"", "sort":"date", "page":0}).then(res => {
+        getRes({"type":"image", "q":"messi", "filter_t":"", "filter_p":"", "sort":"date", "page":0}).then(res => {
             console.log(res)
         })
     }
