@@ -35,7 +35,7 @@ class ImageLayout extends Component {
             this.state.resultsearch.map((data,index)=>{
              return(
                <div>
-                  <ImageCard key={index} image={data._source.img} title={data._source.title} url={data._source.url.slice(0,70)} />
+                  <ImageCard key={index} image={data.img} title={data.title.slice(0,40)} url={data.url.slice(0,70)} />
                 </div>
              )
             })

@@ -35,7 +35,7 @@ class NewsLayout extends Component {
       <div>
         { this.state.resultsearch!= null ? this.state.resultsearch.map((data,index)=>{
           return(
-            <NewsCard key={index} img={data._source.img} date={data._source.date_str} title={data._source.title} content={data._source.content.slice(0,270)+'...'} url={data._source.url}  handleUrl={this.handleUrl} />
+            <NewsCard key={index} img={data.img} date={data.date_str} title={data.title} content={data.content.slice(0,270)+'...'} url={data.url}  handleUrl={this.handleUrl} />
           )
         }) : null}
         <PaginationLayout query={this.props.query} />
