@@ -1,195 +1,121 @@
-import React, { Component } from 'react'
 import fetch from 'isomorphic-fetch'
 
-class news extends Component {
-	funcA(res) {
-			this.setState(
-				{
-					data:res.hits.hits, 
-					total:res.hits.total, 
-					time:this.time, 
-					page:this.page, 
-					maxPage:Math.ceil(res.hits.total/20.0)
-				}
-			)
-			console.log(res)
-	}
-
-	async fetching(params, size, writeState) {
-		let body = await {
-				  				"from" : params.page,
-				  				"size" : size,
-								  "query" :
-								  {
-								     "bool" :
-								     {
-								        "must" : 
-								        {
-								          "bool" : 
-								          {
-								            "should" : 
-								            [
-								              {"match" : {"title":params.q}},
-								              {"match" : {"content":params.q}}
-								            ]
-								          }
-								        }
-								      }
-								  }
-								}
-		let filter_body = []
-		if (params.filter_t != "" && writeState){
-			const words = params.filter_t.split(".")
-			const len = words.length
-			for (let i=0;i<len;i++){
-				filter_body.push({"term":{"teams":words[i]}})
-			}
-		}
-		if(params.filter_p != "" && writeState){
-			const words = params.filter_p.split(".")
-			const len = words.length
-			for (let i=0;i<len;i++){
-				filter_body.push({"term":{"players":words[i]}})
-			}	
-		}
-		// console.log(filter_body)
-		if(filter_body != [] && writeState){
-			// console.log('hihihihihihihi')
-			body['query']['bool']['filter'] = {"bool":{"should":filter_body}}
-		}
-		if(params.sort == "date"){
-			body['sort'] = [{"date":"desc"}]
-		}
-		// console.log(body)
-		let res = await fetch('http://orion.mikelab.net:55557/_search',//('http://localhost:9200/_search', 
+const fetching = async (params, size, writeState) => {
+	let body = await {
+		"from" : params.page,
+		"size" : size,
+			"query" :
 			{
-				method: "POST",
-				mode: "cors",
-        cache: "no-cache",
-        credentials: "same-origin",
-        headers: {
-            "Content-Type": "application/json; charset=utf-8",
-        },
-        redirect: "follow",
-        referrer: "no-referrer",
-				body:JSON.stringify(body)
-			})
-		// console.log(res)
-		res = await res.json()
-		if(writeState){
-			this.funcA(res)
-		}
-		return res
-	}
-
-	async getTeamPlayer(params, total) {
-		// console.log(total)
-		let res = await this.fetching(this.params, total, false)
-		// console.log('fuck')
-		// console.log(res.hits.total)
-		res = await this.fetching(this.params, res.hits.total, false)
-		res = res.hits.hits
-		const len = res.length
-		for(let i=0;i<len;i++){
-			const teams = res[i]._source.teams
-			const tLen = teams.length
-			for(let j=0;j<tLen;j++){
-				if (!this.teams.includes(teams[j])){
-					this.teams.push(teams[j])
+				"bool" :
+				{
+				"must" : 
+				{
+					"bool" : 
+					{
+					"should" : 
+					[
+						{"match" : {"title":params.q}},
+						{"match" : {"content":params.q}}
+					]
+					}
+				}
 				}
 			}
-			const players = res[i]._source.players
-			const pLen = players.length
-			for(let j=0;j<tLen;j++){
-				if (!this.players.includes(players[j])){
-					this.players.push(players[j])
-				}
-			}	
-
 		}
-		
-	}
-
-	funcB() {
-		this.setState({players:this.players,teams:this.teams})
-	}
-	async getRes() {
-		let res = await this.fetching(this.params, 20, true)
-		// console.log('hihihi')
-		// console.log(res.hits.total)
-		await this.getTeamPlayer(this.params, res.hits.total)
-		this.funcB(res)
-		// console.log(this.players)
-		// console.log(this.teams)
-	}
-
-	constructor(props) {
-		super(props)
-		this.params = props.url.query
-		// console.log(this.params)
-		this.state = {data: []}
-		this.teams = []
-		this.players = []
-		this.getDocs = this.getDocs.bind(this)
-		this.funcA = this.funcA.bind(this)
-		this.fetching = this.fetching.bind(this)
-		this.getTeamPlayer = this.getTeamPlayer.bind(this)
-		let d = new Date()
-    const start = d.getTime()
-    this.getRes()
-		d = new Date()
-    const stop = d.getTime()
-    this.time = stop-start
-    this.page = this.params.page
-	}
-
-	getDocs(type) {
-		const details = <div><p>{this.state.total},{this.state.time},{this.state.page},{this.state.maxPage},{this.state.players},{this.state.teams}</p></div>
-		if(type=="video"){ 
-			return [details, 
-			this.state.data.map(
-				x => x._source.videos.map(
-					y => <div>
-								<p>{y}</p>
-								<p>{x._source.img}</p>
-								<p>{x._source.title}</p>	
-								<p>{x._source.url}</p>
-						</div>
-				)
-			)]
+	let filter_body = []
+	if (params.filter_t != "" && writeState){
+		const words = params.filter_t.split(".")
+		const len = words.length
+		for (let i=0;i<len;i++){
+			filter_body.push({"term":{"teams":words[i]}})
 		}
-		if(type=="image"){
-			return [details, 
-			this.state.data.map(
-				x => x._source.imgs.map(
-					y => <div>
-									<p>{y}</p>
-									<p>{x._source.title}</p>	
-									<p>{x._source.url}</p>
-							</div>
-				)
-			)]
-		}
-		return [details, 
-		this.state.data.map(
-			x => <div>
-							<p>{x._source.img}</p>
-							<p>{x._source.title}</p>
-							<p>{JSON.stringify(x._source.date_str)}</p>
-							<p>{x._source.content}</p>
-							<p>{x._source.url}</p>
-				 	</div>
-		)]
-		
 	}
-
-  render() {
-    return (
-    	<div>
-	    	{this.getDocs(this.params.type)}
-	    </div>
-    )
-  }
+	if(params.filter_p != "" && writeState){
+		const words = params.filter_p.split(".")
+		const len = words.length
+		for (let i=0;i<len;i++){
+			filter_body.push({"term":{"players":words[i]}})
+		}	
+	}
+	// console.log(filter_body)
+	if(filter_body != [] && writeState){
+		// console.log('hihihihihihihi')
+		body['query']['bool']['filter'] = {"bool":{"should":filter_body}}
+	}
+	if(params.sort == "date"){
+		body['sort'] = [{"date":"desc"}]
+	}
+	// console.log(body)
+	let res = await fetch('http://orion.mikelab.net:55557/_search',//('http://localhost:9200/_search', 
+		{
+			method: "POST",
+			mode: "cors",
+	cache: "no-cache",
+	credentials: "same-origin",
+	headers: {
+		"Content-Type": "application/json; charset=utf-8",
+	},
+	redirect: "follow",
+	referrer: "no-referrer",
+			body:JSON.stringify(body)
+		})
+	// console.log(res)
+	res = await res.json()
+	return res
 }
 
-export default news
+const getTeamPlayer = async(params, total) => {
+	const teams = []
+	const players = []
+	// console.log(total)
+	let res = await fetching(params, total, false)
+	// console.log(res.hits.total)
+	res = await fetching(params, res.hits.total, false)
+	res = res.hits.hits
+	const len = res.length
+	for(let i=0;i<len;i++){
+		const cur_teams = res[i]._source.teams
+		const tLen = cur_teams.length
+		for(let j=0;j<tLen;j++){
+			if (!teams.includes(cur_teams[j])){
+				teams.push(cur_teams[j])
+			}
+		}
+		const cur_players = res[i]._source.players
+		const pLen = cur_players.length
+		for(let j=0;j<tLen;j++){
+			if (!players.includes(cur_players[j])){
+				players.push(cur_players[j])
+			}
+		}	
+
+	}
+	return [teams, players]
+}
+
+const getRes = async(params) => {
+	let d = new Date()
+	const start = d.getTime()
+	const res = await fetching(params, 20, true)
+	// console.log('hihihi')
+	// console.log(res.hits.total)
+	const teams_players = await getTeamPlayer(params, res.hits.total)
+	// console.log(this.players)
+	// console.log(this.teams)
+	const stop = d.getTime()
+	const max_page = Math.ceil(res.hits.total/20)
+	if(params.type==="videos"){
+		return {res:res.hits.hits,time:stop-start,cur_page:params.page,max_page:max_page,total:res.hits.total,filter_teams:teams_players[0],filter_players:teams_players[1]}
+	} else if (params.type==="image"){
+		return {res:res.hits.hits,time:stop-start,cur_page:params.page,max_page:max_page,total:res.hits.total,filter_teams:teams_players[0],filter_players:teams_players[1]}
+	}
+	return {res:res.hits.hits,time:stop-start,cur_page:params.page,max_page:max_page,total:res.hits.total,filter_teams:teams_players[0],filter_players:teams_players[1]}
+}
+
+const main = async () => {
+	const res = await fetching({"type":"news", "q":"messi", "filter_t":"", "filter_p":"", "sort":"date", "page":0}, 20)
+	const data = await res.json()
+	console.log(JSON.stringify(data))
+}
+
+export default getRes
