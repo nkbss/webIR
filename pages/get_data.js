@@ -96,14 +96,18 @@ const getTeamPlayer = async(params, total) => {
 const getRes = async(params) => {
 	let d = new Date()
 	const start = d.getTime()
-	let res = await fetching(params, 20, true)
+	let size = 20
+	if(params.type !== "news"){
+		size = 30
+	}
+	let res = await fetching(params, size, true)
 	// console.log('hihihi')
 	// console.log(res.hits.total)
 	const teams_players = await getTeamPlayer(params, res.hits.total)
 	// console.log(this.players)
 	// console.log(this.teams)
 	const stop = d.getTime()
-	const max_page = Math.ceil(res.hits.total/20)
+	const max_page = Math.ceil(res.hits.total/size)
 	const total = res.hits.total
 	const time = stop - start
 	res = res.hits.hits
@@ -111,9 +115,8 @@ const getRes = async(params) => {
 		const videos_res = []
 		const len_videos = res.length
 		for(let i=0;i<len_videos;i++){
-			const len_cur_videos = res[i]["videos"]
+			const len_cur_videos = res[i]["_source"]["videos"].length
 			for(let j=0;j<len_cur_videos;j++) {
-				console.log(res[i])
 				videos_res.push({
 					video:res[i]["_source"]["videos"][j],
 					img:res[i]["_source"]["img"],
