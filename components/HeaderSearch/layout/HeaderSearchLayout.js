@@ -7,16 +7,16 @@ class HeaderSearchLayout extends Component {
     filterby: false
   }
 
-  handleRoute = id => {
-    console.log('clicked')
-    if (id === 'news') {
-      Router.push('/search')
-    } else if (id === 'image') {
-      Router.push('/image')
-    } else if (id === 'video') {
-      Router.push('/video')
-    }
-  }
+  // handleRoute = id => {
+  //   console.log('clicked')
+  //   if (id === 'news') {
+  //     Router.push('/search')
+  //   } else if (id === 'image') {
+  //     Router.push('/image')
+  //   } else if (id === 'video') {
+  //     Router.push('/video')
+  //   }
+  // }
 
   search = e => {
     if (this.state.search != null) {
@@ -46,7 +46,8 @@ class HeaderSearchLayout extends Component {
       <div className="topHeader">
         <HeaderSearchCard
           openFilterby={this.openFilterby}
-          handleRoute={this.handleRoute}
+          // handleRoute={this.handleRoute}
+          handlePage={this.props.handlePage}
           handleSearch={this.handleSearch}
           search={this.search}
         />

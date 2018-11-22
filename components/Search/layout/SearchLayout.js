@@ -4,9 +4,6 @@ import Router from 'next/router'
 class SearchLayout extends Component {
   state = {
     search: null
-    // query: {
-
-    // }
   }
 
   search = e => {

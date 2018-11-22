@@ -3,14 +3,52 @@ import { SearchLayout } from '../components/Search/layout'
 import { NewsLayout } from '../components/News/Layout'
 import '../style.css'
 import { HeaderSearchLayout } from '../components/HeaderSearch/layout'
-
+import { ImageLayout } from '../components/Image/layout/ImageLayout';
+import { VideoLayout } from '../components/Video/layout/VideoLayout'
+import Router from 'next/router'
 class search extends Component {
+
+
+state = {
+        q:this.props.url.query.q,
+        type:this.props.url.query.type,
+        filter_t:this.props.url.query.filter_t,
+        filter_p:this.props.url.query.filter_p,
+        sort:this.props.url.query.sort,
+        page:this.props.url.query.page
+    }
+
+    handlePage = (type) => {
+        const state = this.state;
+        state.type = type;
+        Router.push({
+          pathname:'/search',
+          query: state
+        })
+    } 
+
   render() {
+console.log(this.state)
     
+
     return (
       <div>
-        <HeaderSearchLayout />
-        <NewsLayout query={this.props.url.query} />
+        <HeaderSearchLayout handlePage={this.handlePage} />
+        {this.state.type === 'news'? 
+          <div>
+            <NewsLayout query={this.state} />
+          </div>
+        : null}
+        {this.state.type === 'image' ? 
+          <div>
+            <ImageLayout query={this.state}/>
+          </div>
+        :null}
+        {this.state.type === 'video' ? 
+          <div>
+            <VideoLayout query={this.state} />
+          </div>
+        :null}
       </div>
     )
   }

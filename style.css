@@ -83,3 +83,20 @@
 #newscard{
   color: black
 }
+
+#imagecard-card {
+  height: 309px;
+  width: 290px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+#imagecard-image {
+ height: 175px;
+ width: 290px;
+}
+
+#newscard-image{
+  height: 130px;
+
+}

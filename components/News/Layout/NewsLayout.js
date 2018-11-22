@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { NewsCard } from '../Cards'
 import { PaginationLayout } from '../../Pagination'
 import getRes from '../../../pages/get_data';
-import Router from 'next/router'
+
 
 class NewsLayout extends Component {
 

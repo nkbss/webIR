@@ -49,17 +49,17 @@ const HeaderSearchCard = props => {
           <Grid.Row columns={7} id="headersearch-gridrow-option">
             <Grid.Column width={2} />
             <Grid.Column width={2}>
-              <Menu.Item onClick={() => props.handleRoute('news')}>
+              <Menu.Item onClick={() => props.handlePage('news')}>
                 <label className="headersearch-label">NEWS</label>
               </Menu.Item>
             </Grid.Column>
             <Grid.Column width={2}>
-              <Menu.Item onClick={() => props.handleRoute('image')}>
+              <Menu.Item onClick={() => props.handlePage('image')}>
                 <label className="headersearch-label">IMAGE</label>
               </Menu.Item>
             </Grid.Column>
             <Grid.Column width={2}>
-              <Menu.Item onClick={() => props.handleRoute('video')}>
+              <Menu.Item onClick={() => props.handlePage('video')}>
                 <label className="headersearch-label">VIDEO</label>
               </Menu.Item>
             </Grid.Column>

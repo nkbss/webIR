@@ -11,12 +11,14 @@ const NewsCard = (props) => {
           <a href={props.url}>
             <Card fluid onClick={()=>props.handleUrl(props.url)} id="newscard">
               <Card.Content>
-                <Grid verticalAlign="middle">
-                  <Grid.Row>
-                    <Grid.Column width="3" textAlign="center">
+                <Grid  verticalAlign="middle">
+                  <Grid.Row >
+                    <Grid.Column  width={3} >
                       <Image
                         src={props.img}
                         size="large"
+                        centered
+                        id="newscard-image"
                       />
                     </Grid.Column>
                     <Grid.Column width="13">
