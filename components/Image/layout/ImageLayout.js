@@ -13,6 +13,10 @@ class ImageLayout extends Component {
     resultsearch:null
   } 
 
+  handleUrl = (url) => {
+    console.log(url)
+  }
+
   getResultSearch = () => {
 
     getRes({"type":this.props.query.type, "q":this.props.query.q, "filter_t":this.props.query.filter_t, "filter_p":this.props.query.filter_p, "sort":this.props.query.sort, "page":this.props.query.page}).then(res => {
@@ -35,7 +39,7 @@ class ImageLayout extends Component {
             this.state.resultsearch.map((data,index)=>{
              return(
                <div>
-                  <ImageCard key={index} image={data.img} title={data.title.slice(0,40)} url={data.url.slice(0,70)} />
+                  <ImageCard key={index} image={data.img} title={data.title.slice(0,40)} url={data.url.slice(0,70)} handleUrl={this.handleUrl} />
                 </div>
              )
             })

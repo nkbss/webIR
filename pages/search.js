@@ -33,7 +33,7 @@ console.log(this.state)
 
     return (
       <div>
-        <HeaderSearchLayout handlePage={this.handlePage} />
+        <HeaderSearchLayout handlePage={this.handlePage} query={this.state} />
         {this.state.type === 'news'? 
           <div>
             <NewsLayout query={this.state} />
