@@ -61,7 +61,7 @@ class news extends Component {
 			body['sort'] = [{"date":"desc"}]
 		}
 		// console.log(body)
-		let res = await fetch('http://localhost:9200/_search', 
+		let res = await fetch('http://orion.mikelab.net:55557/_search', 
 			{
 				method: "POST",
 				mode: "cors",
@@ -76,6 +76,8 @@ class news extends Component {
 			})
 		// console.log(res)
 		res = await res.json()
+		
+		// console.log(res)
 		if(writeState){
 			this.funcA(res)
 		}
@@ -144,6 +146,7 @@ class news extends Component {
 	}
 
 	getDocs(type) {
+		console.log(this.params)
 		const details = <div><p>{this.state.total},{this.state.time},{this.state.page},{this.state.maxPage},{this.state.players},{this.state.teams}</p></div>
 		if(type=="video"){ 
 			return [details, 
