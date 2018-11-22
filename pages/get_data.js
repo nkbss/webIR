@@ -108,6 +108,7 @@ const getRes = async(params) => {
 	const teams_players = await getTeamPlayer(params, res.hits.total)
 	// console.log(this.players)
 	// console.log(this.teams)
+	d = new Date()
 	const stop = d.getTime()
 	const max_page = Math.ceil(res.hits.total/size)
 	const total = res.hits.total
