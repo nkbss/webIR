@@ -6,6 +6,7 @@ import { HeaderSearchLayout } from '../components/HeaderSearch/layout'
 import { ImageLayout } from '../components/Image/layout/ImageLayout';
 import { VideoLayout } from '../components/Video/layout/VideoLayout'
 import Router from 'next/router'
+
 class search extends Component {
 
 
@@ -28,7 +29,7 @@ state = {
     } 
 
   render() {
-console.log(this.state)
+
     
 
     return (
@@ -49,6 +50,7 @@ console.log(this.state)
             <VideoLayout query={this.state} />
           </div>
         :null}
+    
       </div>
     )
   }

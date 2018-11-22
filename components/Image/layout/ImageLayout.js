@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { ImageCard } from '../cards'
-import { PaginationLayout } from '../../Pagination'
+
 import getRes from '../../../pages/get_data';
 import { Grid,Card } from 'semantic-ui-react';
+import { PaginationLayout } from '../../Pagination';
 class ImageLayout extends Component {
 
   componentDidMount = () => {
@@ -51,10 +52,10 @@ class ImageLayout extends Component {
     </Grid>
 
 
-
+  <PaginationLayout query={this.props.query} maxpage={this.state.maxpage+1} />
         
         
-        <PaginationLayout />
+        
       </div>
     )
   }

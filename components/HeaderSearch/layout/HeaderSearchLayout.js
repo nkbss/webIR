@@ -26,6 +26,20 @@ class HeaderSearchLayout extends Component {
     this.setState({ search: e.target.value })
   }
 
+  handleSort = (e,{value}) => {
+    Router.push({
+      pathname:'/search',
+      query:{
+        type:this.props.query.type,
+        q:this.props.query.q,
+        filter_t:this.props.query.filter_t,
+        filter_p:this.props.query.filter_p,
+        sort:value,
+        page:0
+      }
+    }).then(location.reload())
+  }
+
   openFilterby = () => {
     this.setState({ filterby: true })
   }
@@ -45,6 +59,7 @@ class HeaderSearchLayout extends Component {
           handlePage={this.props.handlePage}
           handleSearch={this.handleSearch}
           search={this.search}
+          handleSort={this.handleSort}
         />
         <FilterByCard filterby={filterby} closeFilterby={this.closeFilterby} />
       </div>

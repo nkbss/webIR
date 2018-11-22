@@ -1,10 +1,10 @@
 import React from 'react'
 import { Pagination } from '../../node_modules/semantic-ui-react'
 
-const PaginationCard = () => {
+const PaginationCard = (props) => {
   return (
     <div className="pagination-section">
-      <Pagination defaultActivePage={1} totalPages={10} />
+      <Pagination defaultActivePage={props.firstPage} totalPages={props.maxpage} onPageChange={props.handlePageChange} />
     </div>
   )
 }

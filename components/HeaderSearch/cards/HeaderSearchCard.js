@@ -10,6 +10,11 @@ import {
 
 const image = '../../../static/images/football.png'
 
+  const option = [
+    {key:1,text:'Relevant',value:'Relevant'},
+    {key:2,text:'Time',value:'Time'}
+  ]
+
 const HeaderSearchCard = props => {
   return (
     <div>
@@ -70,14 +75,7 @@ const HeaderSearchCard = props => {
               </Menu.Item>
             </Grid.Column>
             <Grid.Column width={2}>
-              <Dropdown text="Sort by" pointing className="headersearch-label">
-                <Dropdown.Menu>
-                  <Dropdown.Item id="headersearch-dropdown">
-                    Relevant
-                  </Dropdown.Item>
-                  <Dropdown.Item id="headersearch-dropdown">Time</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+              <Dropdown text="Sort by" pointing className="headersearch-label" onChange={props.handleSort} options={option}/>
             </Grid.Column>
           </Grid.Row>
         </Grid>

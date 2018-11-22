@@ -50,7 +50,7 @@ class VideoLayout extends Component {
       </Grid.Row>
     </Grid>
         
-        <PaginationLayout />
+    <PaginationLayout query={this.props.query} maxpage={this.state.maxpage+1} />
       </div>
     )
   }

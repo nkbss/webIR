@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import { NewsCard } from '../Cards'
-import { PaginationLayout } from '../../Pagination'
+
 import getRes from '../../../pages/get_data';
+import { PaginationLayout } from '../../Pagination';
 
 
 class NewsLayout extends Component {
 
 
     state = {
-      resultsearch : null
+      resultsearch : null,
+      maxpage:null
     }
   
   componentDidMount = () => {
@@ -21,8 +23,10 @@ class NewsLayout extends Component {
 
   getResultSearch = () => {
     getRes({"type":this.props.query.type, "q":this.props.query.q, "filter_t":this.props.query.filter_t, "filter_p":this.props.query.filter_p, "sort":this.props.query.sort, "page":this.props.query.page}).then(res => {
+      console.log(res)
       this.setState({
-        resultsearch:res.res
+        resultsearch:res.res,
+        maxpage:res.max_page
       })
     })
   }
@@ -38,7 +42,7 @@ class NewsLayout extends Component {
             <NewsCard key={index} img={data.img} date={data.date_str} title={data.title} content={data.content.slice(0,270)+'...'} url={data.url}  handleUrl={this.handleUrl} />
           )
         }) : null}
-        <PaginationLayout query={this.props.query} />
+       <PaginationLayout query={this.props.query} maxpage={this.state.maxpage+1} />
       </div>
     )
   }
