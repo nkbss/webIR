@@ -3,9 +3,10 @@ import { Card, Image } from '../../../node_modules/semantic-ui-react'
 
 const ImageCard = (props) => {
   return (
-  
-            <Card raised id="imagecard-card">
-              <img
+          <div>
+            <a href={props.url}>
+              <Card raised id="imagecard-card" onClick={()=>props.handleUrl(props.url)}>
+              <Image
                 src={props.image}
                 size="large"
                 id="imagecard-image"
@@ -18,6 +19,10 @@ const ImageCard = (props) => {
                 </Card.Description>
               </Card.Content>
             </Card>
+            </a>
+             
+          </div>
+           
       
   )
 }

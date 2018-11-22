@@ -3,25 +3,20 @@ import { HeaderSearchCard, HeaderOptionCard } from '../cards'
 import { FilterByCard } from '../cards/FilterByCard'
 import Router from 'next/router'
 class HeaderSearchLayout extends Component {
+
   state = {
-    filterby: false
+    filterby: false,
+    search:null
   }
 
-  // handleRoute = id => {
-  //   console.log('clicked')
-  //   if (id === 'news') {
-  //     Router.push('/search')
-  //   } else if (id === 'image') {
-  //     Router.push('/image')
-  //   } else if (id === 'video') {
-  //     Router.push('/video')
-  //   }
-  // }
 
   search = e => {
     if (this.state.search != null) {
       if (e.key === 'Enter') {
-        Router.push('/search')
+        Router.push({
+          pathname:'/search',
+          query:{type:this.props.query.type,q:this.state.search,filter_t:'',filter_p:'',sort:'',page:0}
+        }).then(location.reload())
       }
     }
   }
@@ -41,7 +36,7 @@ class HeaderSearchLayout extends Component {
 
   render() {
     const { filterby } = this.state
-
+    console.log(this.props.query)
     return (
       <div className="topHeader">
         <HeaderSearchCard
